@@ -1,8 +1,9 @@
 "use client";
 import Image from "next/image";
 import serviceImage from "../../../public/images/skills_light.png";
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import Pills from "./Pills";
+import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
 const Skill = ({ url, header, alt_text }) => (
@@ -110,16 +111,6 @@ const pills = [
 const Skills = () => {
   const [labels, setLabels] = useState(pills);
   const [skillList, setSkillList] = useState(frontEnd);
-  const skillRefs = useRef([]);
-  useEffect(() => {
-    gsap.from(skillRefs.current, {
-      opacity: 0,
-      y: 50,
-      stagger: 0.2,
-      ease: "power3.out",
-      duration: 1,
-    });
-  }, []);
   const handleLabelClick = (label) => {
     labels.forEach((labelItem) => {
       if (labelItem.labels === label.labels) {
@@ -128,6 +119,7 @@ const Skills = () => {
         labelItem.active = false;
       }
     });
+    setLabels(labels);
     if (label.labels === "Front End") {
       setSkillList(frontEnd);
     } else if (label.labels === "Back End") {
@@ -136,10 +128,21 @@ const Skills = () => {
       setSkillList(other);
     }
   };
+
+  useGSAP(() => {
+    const skillIcons = document.getElementById("skill-icons").children;
+    gsap.from(skillIcons, {
+      delay: 0.3,
+      opacity: 0,
+      y: 50,
+      ease: "power3.out",
+      duration: 0.5,
+    });
+  }, [skillList])
+
   return (
     <div id="skills" className="min-h-screen">
       <section
-        id="skills"
         className="code-section bg-white py-20 font-['Poppins']"
       >
         <div className="container mx-auto px-4 sm:px-12 xl:px-32 h-full">
@@ -167,7 +170,7 @@ const Skills = () => {
             </div>
             <div className="xl:w-[60%]">
               <Pills labels={labels} handleClick={handleLabelClick} />
-              <div className="grid w-full grid-cols-4 gap-y-12 md:grid-cols-5 md:gap-10">
+              <div id="skill-icons" className="grid w-full grid-cols-4 gap-y-12 md:grid-cols-5 md:gap-10">
                 {skillList.map((skill, index) => (
                   <Skill
                     ref={(el) => (skillRefs.current[index] = el)}
