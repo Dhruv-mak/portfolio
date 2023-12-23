@@ -26,7 +26,7 @@ const Portfolio = () => {
     },
   ];
   return (
-    <div id="portfolio">
+    <div id="portfolio" className="min-h-screen">
       <section
         id="portfolio"
         className="primary-color-bg primary-color-[50] code-section relative font-['Poppins'] md:mb-36 md:h-[700px] bg-purple-50"
@@ -55,7 +55,7 @@ const Portfolio = () => {
               </p>
             </div>
           </div>
-          <div className="relative z-10 grid grid-cols-1 gap-8 md:grid-cols-3">
+          <div className="relative z-10 grid grid-cols-1 justify-items-center items-start gap-8 md:grid-cols-3">
             {details.map((detail, index) => (
                 <Card detail={detail} key={index} />
             ))}
