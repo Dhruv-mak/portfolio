@@ -1,6 +1,6 @@
 import Image from "next/image";
 import project1 from "../../../public/images/hero1.png";
-import project2 from "../../../public/images/hero2.png";
+import project2 from "../../../public/images/Pandemic_Insights.png";
 import project3 from "../../../public/images/hero3.png";
 import Card from "./Card";
 
@@ -11,18 +11,24 @@ const Portfolio = () => {
       title: "VIKOR Method",
       description:
         "Balancing execution time and efficiency through algorithmic optimization.",
+      code_url: "#",
+      live_url: "#",
     },
     {
       image: project2,
-      title: "Time-Interval Mining",
+      title: "Pandemic Insights",
       description:
-        "Python solution for finding sequential patterns in databases, considering time-interval weights.",
+        "An innovative tool combining database management and web technologies for in-depth and interactive analysis of COVID-19's multifaceted impacts.",
+      code_url: "https://github.com/Dhruv-mak/Pandemic_Insights",
+      live_url: "https://pandemic-insights.vercel.app/",
     },
     {
       image: project3,
       title: "Encrypted Chat Application",
       description:
         "Secure messaging application leveraging Diffie-Hellman key exchange and AES encryption.",
+      code_url: "#",
+      live_url: "#",
     },
   ];
   return (
@@ -57,7 +63,7 @@ const Portfolio = () => {
           </div>
           <div className="relative z-10 grid grid-cols-1 justify-items-center items-start gap-8 md:grid-cols-3">
             {details.map((detail, index) => (
-                <Card detail={detail} key={index} />
+              <Card detail={detail} key={index} />
             ))}
           </div>
         </div>

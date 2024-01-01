@@ -20,8 +20,9 @@ const Card = ({ detail }) => {
         </p>
         <div className="flex flex-row justify-left">
           <a
-            href="#"
+            href={detail.code_url}
             className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            target="_blank"
           >
             Code
             <svg
@@ -41,8 +42,9 @@ const Card = ({ detail }) => {
             </svg>
           </a>
           <a
-            href="#"
+            href={detail.live_url}
             className="ml-5 inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            target="_blank"
           >
             Live
             <svg
